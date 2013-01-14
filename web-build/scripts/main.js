@@ -1,0 +1,1 @@
+require([],function(e){e(function(){})}),define("main",function(){});

@@ -1,0 +1,1 @@
+({appDir:"../",baseUrl:"scripts",dir:"../web-build",modules:[{name:"main"}]});
