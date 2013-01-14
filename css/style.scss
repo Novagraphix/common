@@ -1,0 +1,11 @@
+@import "base";
+
+body {
+    background-color: #fff;
+}
+
+#header {
+    color:$font-color;
+    background-color:#000;
+    height:100px;
+}
