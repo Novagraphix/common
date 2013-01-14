@@ -4,7 +4,7 @@
 
 * Common HTML files to work with
 
-## Quick start
+## QUICK START
 
 * node.js optimizing --> switch to scripts folder (node ../r.js -o app.build.js)
 
