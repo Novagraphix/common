@@ -10,7 +10,7 @@
 <div id="page-">
     <div id="header">header</div>
     <div id="content">content</div>
-    <div id="footer">footer</div>
+    <div id="footer">(C) Novagraphix</div>
 </div>
 </body>
 </html>
