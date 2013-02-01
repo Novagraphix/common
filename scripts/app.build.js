@@ -6,13 +6,14 @@
     //the code minified by UglifyJS.
     //optimize: "none",
 
-    //paths: {
-    //    "jquery": "require-jquery"
-    //},
+    paths: {
+        "jquery": "require-jquery"
+    },
 
     modules: [
         {
-            name: "main"
+            name: "main",
+			exclude: ["jquery"]
         }
     ]
 })

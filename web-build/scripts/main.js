@@ -1,1 +1,1 @@
-require([],function(e){e(function(){})}),define("main",function(){});
+require(["jquery"],function(e){e(function(){})}),define("main",function(){});

@@ -1,1 +1,1 @@
-({appDir:"../",baseUrl:"scripts",dir:"../web-build",modules:[{name:"main"}]});
+({appDir:"../",baseUrl:"scripts",dir:"../web-build",paths:{jquery:"require-jquery"},modules:[{name:"main",exclude:["jquery"]}]});

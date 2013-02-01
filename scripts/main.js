@@ -1,4 +1,4 @@
-require([], function($) {
+require(['jquery'], function($) {
     $(function() {
         //Code
     });
