@@ -11,3 +11,7 @@
 ## ADDITIONAL
 
 Nothing reallly special...just a GIT test
+
+## CHANGELOG
+
+* 19.02.2013: Added [Sassaparilla](https://github.com/fffunction/sassaparilla)
