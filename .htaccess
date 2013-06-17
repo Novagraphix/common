@@ -1,0 +1,8 @@
+AddType audio/mpeg mp3
+AddType application/x-font-woff woff
+RewriteEngine on
+#RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)/(.*)\.html$ index.php?page=$3&folder=$2&lang=$1 [QSA,NC,L]
+RewriteRule ^(.*)\.html$ index.php?page=$1 [QSA,NC,L]

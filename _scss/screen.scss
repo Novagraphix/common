@@ -1,0 +1,37 @@
+@import "compass/typography/vertical_rhythm";
+@import "compass/css3";
+@import "compass/utilities";
+
+@import "libs/reset";
+@import "libs/settings";
+@import "libs/mixins";
+@import "libs/navigation";
+
+
+body {
+    line-height: 22px;
+    font-size: 16px;
+    color: black;
+    font-family: 'Old Standard TT', serif;
+    background-color: #f2eeec;
+}
+
+a {
+    text-decoration: none;
+    @include transition;
+}
+
+a:hover {
+    color: red;
+}
+
+img {
+    vertical-align: bottom;
+}
+
+h1 {
+    padding-top:8px;
+    color: black;
+    font-size: 40px;
+    line-height:40px;
+}
