@@ -12,11 +12,17 @@ body {
     line-height: 22px;
     font-size: 16px;
     color: black;
-    font-family: 'Old Standard TT', serif;
+    font-family: 'Pathway Gothic One', sans-serif;
     background-color: #f2eeec;
 }
 
+section#page {
+    margin: 0 auto;
+    width: 960px;
+}
+
 a {
+    color: white;
     text-decoration: none;
     @include transition;
 }
@@ -26,12 +32,28 @@ a:hover {
 }
 
 img {
+    border: 0;
     vertical-align: bottom;
 }
 
 h1 {
+    color: red;
     padding-top:8px;
-    color: black;
+    padding-bottom: 10px;
     font-size: 40px;
     line-height:40px;
+}
+
+header {
+    text-align: center;
+}
+
+footer {
+    padding-left: 20px;
+    margin-top: 20px;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    height:40px;
+    line-height: 40px;
 }
