@@ -19,6 +19,35 @@
   text-transform: lowercase;
 }
 
+// List styles
+// -------------------------------------------------------
+
+// Mixins for list style types
+@mixin unordered {
+list-style-position: outside;
+list-style-type: disc;
+}
+
+@mixin unordered-inside {
+list-style-position: inside;
+list-style-type: disc;
+}
+
+@mixin ordered {
+list-style-position: outside;
+list-style-type: decimal;
+}
+
+@mixin ordered-inside {
+list-style-position: inside;
+list-style-type: decimal;
+}
+
+@mixin nobullet {
+list-style-type: none;
+}
+
+
 // Retina images.
 // Use with care - http://37signals.com/svn/posts/3271-easy-retina-ready-images-using-scss
 // -------------------------------------------------------
