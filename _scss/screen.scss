@@ -1,11 +1,8 @@
-@import "compass/typography/vertical_rhythm";
 @import "compass/css3";
-@import "compass/utilities";
 
 @import "libs/reset";
 @import "libs/settings";
 @import "libs/mixins";
-@import "libs/navigation";
 
 
 body {
@@ -19,6 +16,9 @@ body {
 section#page {
     margin: 0 auto;
     width: 960px;
+    #content {
+        margin: 20px 0 20px 0;
+    }
 }
 
 a {
@@ -46,11 +46,34 @@ h1 {
 
 header {
     text-align: center;
+    height:50px;
+    width:100%;
+    line-height: 50px;
+    color: white;
+    background-color: black;
+    font-size: 18px;
+    nav {
+        text-transform: uppercase;
+        ul {
+            li:not(:first-child) {
+                margin-left: 18px;
+            }
+            li {
+                display: inline-block;
+                list-style-type: none;
+                a {
+                    color: #fff;
+                }
+                a.active, a:hover {
+                    color: #f00;
+                }
+            }
+        }
+    }
 }
 
 footer {
     padding-left: 20px;
-    margin-top: 20px;
     background-color: black;
     color: white;
     font-size: 12px;

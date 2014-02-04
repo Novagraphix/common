@@ -7,22 +7,28 @@
             {% block title %}Common{% endblock %}
         </title>
         <meta name="description" content="description">
-        <base href="{{ base }}">
-        <link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
         <meta name="viewport" content="width=1024, user-scalable=yes, maximum-scale=1.0">
-        <script src="scripts/skel.min.js">
-        {
-          prefix: "css/screen",
-          resetCSS: true,
-          boxModel: "border",
-          grid: { gutters: 0 },
-          breakpoints: {
-            wide: { range: "1024-", containers: 960 },
-            narrow: { range: "481-1024", containers: 560 },
-            mobile: { range: "-480", containers: "fluid", lockViewport: true, grid: { collapse: true } }
-          }
-        }
-        </script>
+        {% if is_base %}
+            <base href="{{ base }}">
+        {% endif %}
+        <link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+        {% if is_skel %}
+            <script src="scripts/skel.min.js">
+            {
+              prefix: "css/screen",
+              resetCSS: true,
+              boxModel: "border",
+              grid: { gutters: 0 },
+              breakpoints: {
+                wide: { range: "1024-", containers: 960 },
+                narrow: { range: "481-1024", containers: 560 },
+                mobile: { range: "-480", containers: "fluid", lockViewport: true, grid: { collapse: true } }
+              }
+            }
+            </script>
+        {% else %}
+            <link rel="stylesheet" href="css/screen.css">
+        {% endif %}
         <!--[if lt IE 9]>
             <script src="scripts/html5shiv.js">
             </script>
@@ -30,6 +36,14 @@
     </head>
 
     <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a {% if page == 'index' %}class="active"{% endif %} href="index.html">Home</a></li>
+                <li><a {% if page == 'site2' %}class="active"{% endif %} href="site2.html">Site2</a></li>
+            </ul>
+        </nav>
+    </header>
     {% block content  %}{% endblock %}
     {% block styles %}{% endblock %}
     </body>
