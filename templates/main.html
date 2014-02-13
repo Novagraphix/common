@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <title>
-            {% block title %}Common{% endblock %}
+            {% block title %}{% endblock %} - {{ release|striptags }} - Offizielle Webseite
         </title>
         <meta name="description" content="description">
         <meta name="viewport" content="width=1024, user-scalable=yes, maximum-scale=1.0">
@@ -12,6 +12,8 @@
             <base href="{{ base }}">
         {% endif %}
         <link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+        <script src="scripts/jquery-1.11.0.min.js"></script>
+        <script src="scripts/jquery.cycle.lite.js"></script>
         {% if is_skel %}
             <script src="scripts/skel.min.js">
             {
@@ -26,9 +28,11 @@
               }
             }
             </script>
+            <script src="scripts/jquery.sidr.min.js"></script>
         {% else %}
             <link rel="stylesheet" href="css/screen.css">
         {% endif %}
+        <script src="scripts/main.js"></script>
         <!--[if lt IE 9]>
             <script src="scripts/html5shiv.js">
             </script>
@@ -45,6 +49,11 @@
         </nav>
     </header>
     {% block content  %}{% endblock %}
+    {% if is_skel %}
+    <div id="mobile-header" class="only-mobile">
+        <a id="mobile-menu-button" href="#sidr-main"><img src="images/mobilemenu.png" width="100" height="35"></a>
+    </div>
+    {% endif %}
     {% block styles %}{% endblock %}
     </body>
 </html>
