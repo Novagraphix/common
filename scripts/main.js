@@ -20,9 +20,9 @@ $(function() {
             $(this).text("KINOFINDER");
     });*/
 
-    $('#mobile-menu-button').sidr({
+    /*$('#mobile-menu-button').sidr({
       name: 'sidr-main',
       source: '#menu'
-    });
+    });*/
 
 });
