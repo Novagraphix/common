@@ -1,9 +1,9 @@
-@import "compass/css3";
-
 @import "libs/reset";
 @import "libs/settings";
 @import "libs/mixins";
+@import "toolkit";
 
+* { @include box-sizing(border-box); }
 
 body {
     line-height: 22px;
@@ -26,6 +26,8 @@ a:hover {
 img {
     border: 0;
     vertical-align: bottom;
+    //max-width: 100%;
+    //height: auto;
 }
 
 h1 {
@@ -83,6 +85,7 @@ section.home {
         font-size: 30px;
         color: #000;
         cite {
+            @include vertical-center;
             text-align: center;
             width:500px;
         }
