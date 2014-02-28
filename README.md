@@ -28,7 +28,7 @@ IMPORTANT: READ THIS [Team-SASS Toolkit](https://github.com/Team-Sass/toolkit), 
 
 ## ADDITIONAL
 
-Uses html5shiv.js, cycle.lite
+Uses html5shiv.js, cycle.lite, sidr.js
 
 ## CHANGELOG
 
