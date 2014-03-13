@@ -1,0 +1,6 @@
+{
+    "require": {
+        "monolog/monolog": "1.7.*@dev",
+        "twig/twig": "1.15.*@dev"
+    }
+}

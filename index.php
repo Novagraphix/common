@@ -12,7 +12,7 @@ $is_skel = false;
  * Ende
  */
 
-require_once 'inc/Twig/Autoloader.php';
+require 'vendor/autoload.php';
 Twig_Autoloader::register();
 
 $loader = new Twig_Loader_Filesystem('templates');
@@ -20,6 +20,14 @@ $twig = new Twig_Environment($loader, array(
 	'cache' => 'cache',
 	'auto_reload' => true
 ));
+
+use Monolog\Logger;
+use Monolog\Handler\BrowserConsoleHandler;
+
+// create a log channel
+$log = new Logger('Novagraphix');
+$log->pushHandler(new BrowserConsoleHandler());
+
 
 if($is_base) {
 	if ($_SERVER["SERVER_NAME"]=='localhost'||$_SERVER["SERVER_NAME"]=='127.0.0.1') {
@@ -35,6 +43,8 @@ if (isset($_GET["page"])) {
 	}
 }
 
+$log->addInfo('Aufgerufene Seite: '.$page);
+
 $tplfile = '/pages/index.html';
 if (isset($_GET["page"])) {
 	$tplfile = '/pages/'.$page.'.html';
@@ -47,6 +57,7 @@ if (strftime("%Y-%m-%d")>=$releasedate) {
 } else {
 	$release = 'Ab <span>27.03.2014</span> im Kino';
 }
+$log->addInfo('Kinostart: '.$release);
 
 echo $twig->render($tplfile, array(
 	'page' => $page,
