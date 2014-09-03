@@ -50,12 +50,12 @@ if (isset($_GET["page"])) {
 	$tplfile = '/pages/'.$page.'.html';
 }
 
-$releasedate = '2014-03-27';
+$releasedate = '2014-10-27';
 $release = '';
 if (strftime("%Y-%m-%d")>=$releasedate) {
 	$release = '<span>Jetzt im Kino!</span>';
 } else {
-	$release = 'Ab <span>27.03.2014</span> im Kino';
+	$release = 'Ab <span>27.10.2014</span> im Kino';
 }
 $log->addInfo('Kinostart: '.$release);
 

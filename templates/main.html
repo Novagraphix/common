@@ -11,9 +11,10 @@
         {% if is_base %}
             <base href="{{ base }}">
         {% endif %}
-        <link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
-        <script src="scripts/jquery-1.11.0.min.js"></script>
-        <script src="scripts/jquery.cycle.lite.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300' rel='stylesheet' type='text/css'>
+        <script src="scripts/jquery-1.11.1.min.js"></script>
+        <script src="scripts/jquery.cycle2.min.js"></script>
+        <script src="scripts/nova.ytOverlay.js"></script>
         {% if is_skel %}
             <script src="scripts/skel.min.js">
             {
@@ -40,6 +41,12 @@
     </head>
 
     <body>
+    <div id='sitePreloader'>
+        <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+        </div>
+    </div>
     <header>
         <nav>
             <ul>
@@ -51,7 +58,7 @@
     {% block content  %}{% endblock %}
     <footer>
         <div id="footernav">
-            <a href="#" target="_blank">FILMWECKER</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">KINOFINDER</a>
+            <a href="#" target="_blank">KINOFINDER</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">FILMWECKER</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">PRESSESERVER</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">IMPRESSUM</a>
         </div>
         <div id="kinostart">{{ release|raw }}</div>
         <div id="copyright"><a href="#" target="_blank">FIRMA</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">PRESSE</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">IMPRESSUM</a>

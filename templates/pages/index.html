@@ -6,8 +6,11 @@
     <div id="content">
     <h1>Index</h1>
     <p><span class="test">Lorem ipsum</span> dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+    <p>
+        <div id="trailer">TRAILER ANSEHEN</div>
+    </p>
     </div>
-    <div id="cites">
+    <div id="cites" class="cycle-slideshow" data-cycle-slides="> cite">
         <cite>„Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.”<br><span class="author">Author</span></cite>
         <cite>„Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.”<br><span class="author">Author</span></cite>
     </div>
@@ -15,4 +18,13 @@
 {% endblock %}
 
 {% block styles %}
+<script type="text/javascript">
+    $(function() {
+
+        $().ytOverlay({
+            'youtubeID' : 'Fq3QmtV8vT0',
+            'trigger'   : 'trailer'
+        });
+    });
+</script>
 {% endblock %}
