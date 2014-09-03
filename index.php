@@ -12,7 +12,16 @@ $is_skel = false;
  * Ende
  */
 
+/**
+ * NEUE VERSION MIT TWIG, MONOLOG
+ */
 require 'vendor/autoload.php';
+
+/**
+ * ALTE VERSION NUR TWIG...MONOLOG EINTRÄGE IN DER INDEX.PHP ENTFERNEN
+ */
+//require 'inc/Twig/Autoloader.php';
+
 Twig_Autoloader::register();
 
 $loader = new Twig_Loader_Filesystem('templates');
