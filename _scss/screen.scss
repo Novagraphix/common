@@ -128,9 +128,39 @@ footer {
 }
 
 #mobile-header {
+    cursor: pointer;
     position:absolute;
     left:0;
     top:0;
+}
+
+/*====================================
+=            PANEL STYLES            =
+====================================*/
+#mobile-panel {
+    font-size: 24px;
+    background: #000;
+}
+#mobile-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+#mobile-panel ul li a {
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: transparent;
+    color: #fff;
+}
+#mobile-panel ul li a:hover {
+    background: #333;
+}
+#mobile-panel ul li a.active {
+    background: red;
+    color: black;
 }
 
 #sitePreloader {

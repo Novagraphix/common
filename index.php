@@ -6,7 +6,7 @@
 
 $base = ""; //http://www.film.de
 $is_base = false;
-$is_skel = false;
+$is_skel = true;
 
 /**
  * Ende

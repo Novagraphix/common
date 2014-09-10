@@ -24,12 +24,12 @@
               grid: { gutters: 0 },
               breakpoints: {
                 wide: { range: "1024-", containers: 960 },
-                narrow: { range: "481-1024", containers: 560 },
-                mobile: { range: "-480", containers: "fluid", lockViewport: true, grid: { collapse: true } }
+                narrow: { range: "961-1024", containers: 560 },
+                mobile: { range: "-960", containers: "fluid", lockViewport: true, grid: { collapse: true } }
               }
             }
             </script>
-            <script src="scripts/jquery.sidr.min.js"></script>
+            <script src="scripts/scotchPanels.min.js"></script>
         {% else %}
             <link rel="stylesheet" href="css/screen.css">
         {% endif %}
@@ -50,8 +50,7 @@
     <header>
         <nav>
             <ul>
-                <li><a {% if page == 'index' %}class="active"{% endif %} href="index.html">Home</a></li>
-                <li><a {% if page == 'site2' %}class="active"{% endif %} href="site2.html">Site2</a></li>
+                {% include 'elements/navigation.html' %}
             </ul>
         </nav>
     </header>
@@ -70,7 +69,12 @@
     </footer>
     {% if is_skel %}
     <div id="mobile-header" class="only-mobile">
-        <a id="mobile-menu-button" href="#sidr-main"><img src="images/mobilemenu.png" width="100" height="35"></a>
+        <img id="mobile-menu-button" src="images/mobilemenu.png" width="100" height="35">
+    </div>
+    <div id="mobile-panel" class="only-mobile">
+        <ul>
+            {% include 'elements/navigation.html' %}
+        </ul>
     </div>
     {% endif %}
     {% block styles %}{% endblock %}
