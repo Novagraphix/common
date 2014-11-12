@@ -40,7 +40,7 @@ $(function() {
             duration: 300,
             transition: 'ease',
             clickSelector: '#mobile-menu-button',
-            distanceX: '70%',
+            distanceX: '40%',
             enableEscapeKey: true
         });
 

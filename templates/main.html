@@ -7,7 +7,6 @@
             {% block title %}{% endblock %} - {{ release|striptags }} - Offizielle Webseite
         </title>
         <meta name="description" content="description">
-        <meta name="viewport" content="width=1024, user-scalable=yes, maximum-scale=1.0">
         {% if is_base %}
             <base href="{{ base }}">
         {% endif %}
@@ -16,18 +15,46 @@
         <script src="scripts/jquery.cycle2.min.js"></script>
         <script src="scripts/nova.ytOverlay.js"></script>
         {% if is_skel %}
-            <script src="scripts/skel.min.js">
-            {
-              prefix: "css/screen",
-              resetCSS: true,
-              boxModel: "border",
-              grid: { gutters: 0 },
-              breakpoints: {
-                wide: { range: "1024-", containers: 960 },
-                narrow: { range: "961-1024", containers: 560 },
-                mobile: { range: "-960", containers: "fluid", lockViewport: true, grid: { collapse: true } }
-              }
-            }
+            <script src="scripts/skel.min.js"></script>
+            <script type="text/javascript">
+                skel.init({
+                  reset: 'full',
+                  breakpoints: {
+                    global: {
+                        href: 'css/screen.css',
+                        containers: 1400,
+                        grid: {
+                            gutters: [0, 0]
+                        }
+                    },
+                    large: {
+                        media: '(max-width: 1400px)',
+                        href: 'css/screen-large.css',
+                        containers: 960,
+                        grid: {
+                            gutters: [0, 0]
+                        }
+                    },
+                    medium: {
+                        media: '(max-width: 1024px)',
+                        href: 'css/screen-medium.css',
+                        containers: '90%',
+                        grid: {
+                            gutters: [0, 0],
+                            zoom: 2
+                        }
+                    },
+                    small: {
+                        media: '(max-width: 960px)',
+                        href: 'css/screen-small.css',
+                        containers: '90%',
+                        grid: {
+                            gutters: [0, 0],
+                            zoom: 3
+                        }
+                    },
+                  }
+                });
             </script>
             <script src="scripts/scotchPanels.min.js"></script>
         {% else %}
@@ -68,7 +95,7 @@
         <div id="billing">BILLING IMAGE</div>
     </footer>
     {% if is_skel %}
-    <div id="mobile-header" class="only-mobile">
+    <div id="mobile-header" class="only-small">
         <img id="mobile-menu-button" src="images/mobilemenu.png" width="100" height="35">
     </div>
     <div id="mobile-panel" class="only-mobile">
