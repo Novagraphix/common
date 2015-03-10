@@ -99,54 +99,24 @@ list-style-type: none;
     transform: scale($string);
 }
 
-@mixin google-font($family, $styles: (), $protocol: http) {
+@mixin rotate( $degrees ) {
+  -webkit-transform: rotate(#{$degrees}deg);
+  -moz-transform: rotate(#{$degrees}deg);
+  -ms-transform: rotate(#{$degrees}deg);
+  -o-transform: rotate(#{$degrees}deg);
+  transform: rotate(#{$degrees}deg);
 
-  $url: "http://fonts.googleapis.com/css?family=";
+  filter:  progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)});
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)})";
+  zoom: 1;
+ }
 
-  @if $protocol == https {
-    $url: "https://fonts.googleapis.com/css?family=";
+@mixin box-shadow($left:0, $top:2px, $blur:5px, $spread:0 , $color:rgba(0, 0, 0, 0.5), $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $spread $color;
+    box-shadow:inset $top $left $blur $spread $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $spread $color;
+    box-shadow: $top $left $blur $spread $color;
   }
-
-  $f: 0;
-
-  @each $word in $family {
-    $f: $f + 1;
-    $url: $url + $word;
-
-    @if $f < length($family) {
-      $url: $url + "+";
-    }
-  }
-
-  @if length($styles) == 0 {
-    @import url(#{$url});
-  }
-  @else {
-    $s: 0;
-    $url: $url + ":";
-
-    @each $style in $styles {
-      $s: $s + 1;
-      $url: $url + $style;
-
-      @if $s < length($styles) {
-        $url: $url + ",";
-      }
-    }
-    @import url(#{$url});
-  }
-}
-
-// Examples:
-
-// @include google-font(Open Sans);
-// Output:
-// @import url(//fonts.googleapis.com/css?family=Open+Sans);
-
-// @include google-font(Open Sans,(400,300,600,700));
-// Output:
-// @import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
-
-// Important!
-// - Each Family should be separated in it's own mixin
-// - Do not put anything in quotes
+} 

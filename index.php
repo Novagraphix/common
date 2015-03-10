@@ -13,6 +13,24 @@ $is_skel = true;
  */
 
 /**
+ * findLatest: Methode um immer den letzten Stand einer Datei bei 
+ * fortlaufender Nummerierung zu bekommen (beisp. PDFs)
+ * 
+ */
+function findLatest($begin='', $ext='pdf') {
+	$latest_ctime = 0;
+	$latest_filename = '';
+	$files = glob($begin.'*.'.$ext);
+	// 
+	foreach ( (array) $files as $filename ) {
+		if(filectime($filename) > $latest_ctime){
+			$latest_ctime = filectime ( $filename );
+			$latest_filename = $filename;
+		}
+	}
+	return $latest_filename;
+}
+/**
  * NEUE VERSION MIT TWIG, MONOLOG
  */
 require 'vendor/autoload.php';
@@ -72,7 +90,8 @@ echo $twig->render($tplfile, array(
 	'page' => $page,
 	'base' => $base,
 	'is_skel' => $is_skel,
-	'release' => $release
+	'release' => $release,
+	'startkinos' => findLatest('COMMON', 'pdf')
 ));
 
 ?>
