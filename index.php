@@ -1,8 +1,8 @@
-<?php 
+<?php
 require 'class.Website.php';
 //
 $config = array(
-	'project_name' => 'Common', 
+	'project_name' => 'Common',
 	'twig' => 'new', // 'old' php <= 5.4
 	'releasedate' => '2015-12-24',
 	'mobile_nav' => 'skel-layers', // [ false, 'scotchpanel', 'skel-layers' ]
@@ -55,7 +55,7 @@ $config = array(
 	'modules' => array(
 		'pdfButtons' => array(
 			'startkinos' => array(
-				'use' => true 
+				'use' => true
 			),
 			'schulmaterial' => array(
 				'use' => false
@@ -65,7 +65,7 @@ $config = array(
 			)
 		),
 		'gallery' => array(
-			'use'=>true, 
+			'use'=>true,
 			'images'=>glob('media/gallery/*.jpg')
 		),
 		'trailer' => array(
@@ -81,9 +81,9 @@ $config = array(
 			'og_description' => '' // max 140 zeichen
 		)
 	)
-); 
+);
 $site = new Website($config);
 echo $site->html;
 // |<--
-// 
-// 
+//
+//
