@@ -74,7 +74,7 @@
             {% endif %}
             });
         </script>
-        
+
         <!--[if lt IE 9]>
             <script src="scripts/html5shiv.js">
             </script>
@@ -92,8 +92,8 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     {% endif %}
+        {% include 'elements/preloader.html' %}
         <div id="page">
-            {% include 'elements/preloader.html' %}
 
             <header class="not-small">
                 {% include 'elements/navigation.html' %}
