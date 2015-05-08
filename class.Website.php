@@ -8,12 +8,12 @@ use Monolog\Handler\BrowserConsoleHandler;
 /**
 * <-------------------------------------------------
 */
-class Website 
+class Website
 {
 	private $log;
 	private $config;
 	private $default_config;
-	// 
+	//
 	function __construct($config) {
 		if($config['twig'] == 'new') {
 			// --> create a log channel
@@ -21,7 +21,7 @@ class Website
 			$this->log->pushHandler(new BrowserConsoleHandler());
 			// <-- end log-channel
 		}
-		// 
+		//
 		$this->default_config = array(
 			'page' => $this->getPagename(),
 			'base' => '',
@@ -29,7 +29,7 @@ class Website
 			'releasedate' => date( 'Y-m-d', strtotime('tomorrow') ),
 			'post_releasedate_txt' => 'Jetzt im Kino',
 			'pre_releasedate_txt' => array(
-				'Ab <span>', 
+				'Ab <span>',
 				'</span> im Kino'
 			),
 			'release' => '',
@@ -61,10 +61,10 @@ class Website
 			),
 			'tplfile' => $this->getTemplateFile(),
 		);
-		// 
+		//
 		$config['modules']['pdfButtons']['startkinos']['path'] = $this->findLatestPDF('startkinos');
 		$config['modules']['pdfButtons']['schulmaterial']['path'] = $this->findLatestPDF('schulmaterial');
-		// 
+		//
 		$this->config = array_merge ( $this->default_config, $config );
 		$this->config['release'] = $this->getReleaseTxt($config);
 
@@ -88,7 +88,7 @@ class Website
 			$this->log->addInfo('PDF-Linker (schulmaterial): ' .$this->config['modules']['pdfButtons']['schulmaterial']['path']);
 			$this->log->addInfo('Aufgerufene Seite: '.$this->config['page']);
 		}
-		// 
+		//
 		$this->html = $twig->render($this->config['tplfile'], $this->config);
 	}
 	/**
@@ -96,12 +96,12 @@ class Website
 	 */
 	public function isLocalhost() {
 		$locals = array(
-			'localhost', 
-			'127.0.0.1', 
-			'172.31.1.61', 
+			'localhost',
+			'127.0.0.1',
+			'172.31.1.61',
 			'172.31.1.62'
 		);
-		if( in_array( $_SERVER['SERVER_ADDR'], $locals ) ) { 
+		if( in_array( $_SERVER['SERVER_ADDR'], $locals ) ) {
 			return true;
 		}
 		return false;
@@ -109,7 +109,7 @@ class Website
 
 	public function getBase($full = true) {
 		$dev = $this->isLocalhost() ? '' : '';
-		// 
+		//
 		$url  = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
 		$url .= $_SERVER['SERVER_NAME'];
 		$url .= htmlspecialchars($_SERVER['REQUEST_URI']);
@@ -139,13 +139,13 @@ class Website
 		return $page;
 	}
 
-	public function getTemplateFile(){ 
+	public function getTemplateFile(){
 		if (isset($_GET['page']) && $_GET['page'] != '') {
 			if(!file_exists('templates/pages/'.$_GET['page'].'.html'))
 				return '/pages/404.html';
 			return  '/pages/'.$_GET['page'].'.html';
 		}
-		return '/pages/'.$this->config['page'].'.html';
+		return '/pages/'.$this->getPagename().'.html';
 	}
 	/**
 	 * PRIVATE Functions ------------------------------------------------>
@@ -161,5 +161,5 @@ class Website
 		}
 		return $latest_filename;
 	}
-	// 
+	//
 }
