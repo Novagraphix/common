@@ -1,0 +1,14 @@
+
+#startkinos {
+	background: $primary;
+	width: 100px;
+	height: 100px;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+	display: table;
+	.top {
+		height: 50%;
+		width: 100%;
+		background: #FFF;
+	}
+}

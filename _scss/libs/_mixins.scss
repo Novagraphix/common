@@ -19,35 +19,22 @@
   text-transform: lowercase;
 }
 
-// List styles
-// -------------------------------------------------------
-
-// Mixins for list style types
-@mixin unordered {
-list-style-position: outside;
-list-style-type: disc;
+.clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
-
-@mixin unordered-inside {
-list-style-position: inside;
-list-style-type: disc;
+.pull-left {
+  float: left !important;
 }
-
-@mixin ordered {
-list-style-position: outside;
-list-style-type: decimal;
+.pull-right {
+  float: right !important;
 }
-
-@mixin ordered-inside {
-list-style-position: inside;
-list-style-type: decimal;
-}
-
-@mixin nobullet {
-list-style-type: none;
-}
-
-
 // Retina images.
 // Use with care - http://37signals.com/svn/posts/3271-easy-retina-ready-images-using-scss
 // -------------------------------------------------------
@@ -71,6 +58,13 @@ list-style-type: none;
     -o-transition:      $string;
     transition:         $string;
 }
+@mixin scale($string: 1.1) {
+  -moz-transform: scale($string);
+  -webkit-transform: scale($string);
+  -o-transform: scale($string);
+  -ms-transform: scale($string);
+  transform: scale($string);
+}
 
 @mixin link($string: all 0.3s ease-out) {
     -webkit-transition: $string;
@@ -90,63 +84,67 @@ list-style-type: none;
     bottom: $bottom;
     left: $left;
 }
-
-@mixin scale($string: 1.1) {
-    -webkit-transform: scale($string);
-    -moz-transform: scale($string);
-    -o-transform: scale($string);
-    -ms-transform: scale($string);
-    transform: scale($string);
+@mixin justify($wordspacing: .02em) {
+    text-align: justify; 
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-spacing:$wordspacing;
+    text-rendering: optimizeLegibility; 
+}
+@mixin justify-reset() {
+    text-align: left; 
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-spacing:auto;
+    text-rendering: optimizeLegibility; 
 }
 
-@mixin google-font($family, $styles: (), $protocol: http) {
-
-  $url: "http://fonts.googleapis.com/css?family=";
-
-  @if $protocol == https {
-    $url: "https://fonts.googleapis.com/css?family=";
-  }
-
-  $f: 0;
-
-  @each $word in $family {
-    $f: $f + 1;
-    $url: $url + $word;
-
-    @if $f < length($family) {
-      $url: $url + "+";
-    }
-  }
-
-  @if length($styles) == 0 {
-    @import url(#{$url});
-  }
-  @else {
-    $s: 0;
-    $url: $url + ":";
-
-    @each $style in $styles {
-      $s: $s + 1;
-      $url: $url + $style;
-
-      @if $s < length($styles) {
-        $url: $url + ",";
-      }
-    }
-    @import url(#{$url});
-  }
+@mixin vertical-center {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+@mixin vertical-bottom {
+  position: relative;
+  top:100%;
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+@mixin vertical-reset {
+  position: relative;
+  top:auto;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none!important;
 }
 
-// Examples:
+@mixin center-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50%!important;
+  transform: translateX(-50%);
+}
+@mixin img-stretch-container {
+  min-height:100%; 
+  width:auto;
+}
 
-// @include google-font(Open Sans);
-// Output:
-// @import url(//fonts.googleapis.com/css?family=Open+Sans);
+@mixin rotate( $degrees ) {
+  -webkit-transform: rotate(#{$degrees}deg);
+  -moz-transform: rotate(#{$degrees}deg);
+  -ms-transform: rotate(#{$degrees}deg);
+  -o-transform: rotate(#{$degrees}deg);
+  transform: rotate(#{$degrees}deg);
 
-// @include google-font(Open Sans,(400,300,600,700));
-// Output:
-// @import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
-
-// Important!
-// - Each Family should be separated in it's own mixin
-// - Do not put anything in quotes
+  filter:  progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)});
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)})";
+  zoom: 1;
+ }

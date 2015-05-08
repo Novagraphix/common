@@ -1,109 +1,144 @@
+{% set project = project_name %}
 <!doctype html>
-<html>
-
+<html data-config="{{ config|json_encode() }}">
     <head>
         <meta charset="utf-8">
         <title>
             {% block title %}{% endblock %} - {{ release|striptags }} - Offizielle Webseite
         </title>
-        <meta name="description" content="description">
-        {% if is_base %}
-            <base href="{{ base }}">
+        <meta name="description" content="Offizielle Website zum Film {{project}}">
+        {% if modules.facebookLike.use %}
+        <meta name="title"  property="og:title" content="{{project}} - Offizielle Webseite">
+        <meta name="description" property="og:description" content="{{facebookLike.description}}">
+        <meta content="{{facebookLike.img}}" property="og:image">
         {% endif %}
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,700,500,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="css/preloader.css">
+        {% block styles %}{% endblock %}
         <script src="scripts/jquery-1.11.1.min.js"></script>
-        <script src="scripts/jquery.cycle2.min.js"></script>
-        <script src="scripts/nova.ytOverlay.js"></script>
-        {% if is_skel %}
-            <script src="scripts/skel.min.js"></script>
-            <script type="text/javascript">
-                skel.init({
-                  reset: 'full',
-                  breakpoints: {
-                    global: {
-                        href: 'css/screen.css',
-                        containers: 1400,
-                        grid: {
-                            gutters: [0, 0]
-                        }
-                    },
-                    large: {
-                        media: '(max-width: 1400px)',
-                        href: 'css/screen-large.css',
-                        containers: 960,
-                        grid: {
-                            gutters: [0, 0]
-                        }
-                    },
-                    medium: {
-                        media: '(max-width: 1024px)',
-                        href: 'css/screen-medium.css',
-                        containers: '90%',
-                        grid: {
-                            gutters: [0, 0],
-                            zoom: 2
-                        }
-                    },
-                    small: {
-                        media: '(max-width: 960px)',
-                        href: 'css/screen-small.css',
-                        containers: '90%',
-                        grid: {
-                            gutters: [0, 0],
-                            zoom: 3
-                        }
-                    },
-                  }
-                });
-            </script>
-            <script src="scripts/scotchPanels.min.js"></script>
-        {% else %}
-            <link rel="stylesheet" href="css/screen.css">
+        <script src="scripts/skel.min.js"></script>
+        {% if mobile_nav == 'scotchpanel' %}
+        <link rel="stylesheet" type="text/css" href="css/scotchpanel.css">
+        <script src="scripts/scotchPanels.min.js"></script>
+        <script src="scripts/scotchPanels.init.js"></script>
         {% endif %}
-        <script src="scripts/main.js"></script>
+        {% if mobile_nav == 'skel-layers' %}
+        <link rel="stylesheet" type="text/css" href="css/skel-layers.css">
+        <script src="scripts/skel-layers.min.js"></script>
+        <script src="scripts/skel-layers.init.js"></script>
+        {% endif %}
+        <script id="skel">
+            skel.init({
+              reset: 'full',
+              breakpoints: {
+                global: {
+                    href: 'css/screen.css',
+                    containers: 1400,
+                    grid: {
+                        gutters: [0, 0]
+                    }
+                },
+                large: {
+                    media: '(max-width: 1400px)',
+                    href: 'css/screen-large.css',
+                    containers: 960,
+                    grid: {
+                        gutters: [0, 0]
+                    }
+                },
+                medium: {
+                    media: '(max-width: 1024px)',
+                    href: 'css/screen-medium.css',
+                    containers: '90%',
+                    grid: {
+                        gutters: [0, 0],
+                        zoom: 2
+                    }
+                },
+                small: {
+                    media: '(max-width: 960px)',
+                    href: 'css/screen-small.css',
+                    containers: '100%',
+                    grid: {
+                        // gutters: [0, 0],
+                        zoom: 3
+                    }
+                },
+              }
+            {% if mobile_nav == 'skel-layers' %}
+                ,
+                plugins: {
+                    layers: {
+                    }
+                }
+            {% endif %}
+            });
+        </script>
+        
         <!--[if lt IE 9]>
             <script src="scripts/html5shiv.js">
             </script>
         <![endif]-->
     </head>
 
-    <body>
-    <div id='sitePreloader'>
-        <div class="spinner">
-            <div class="cube1"></div>
-            <div class="cube2"></div>
-        </div>
-    </div>
-    <header>
-        <nav>
-            <ul>
-                {% include 'elements/navigation.html' %}
-            </ul>
-        </nav>
-    </header>
-    {% block content  %}{% endblock %}
-    <footer>
-        <div id="footernav">
-            <a href="#" target="_blank">KINOFINDER</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">FILMWECKER</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">PRESSESERVER</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">IMPRESSUM</a>
-        </div>
-        <div id="kinostart">{{ release|raw }}</div>
-        <div id="copyright"><a href="#" target="_blank">FIRMA</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">PRESSE</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" target="_blank">IMPRESSUM</a>
-            <br>
-            <span class="cline">© 2014 FIRMA. Alle Rechte vorbehalten. made by <a href="http://www.novagraphix.de" target="_blank">novagraphix</a>
-            </span>
-        </div>
-        <div id="billing">BILLING IMAGE</div>
-    </footer>
-    {% if is_skel %}
-    <div id="mobile-header" class="only-small">
-        <img id="mobile-menu-button" src="images/mobilemenu.png" width="100" height="35">
-    </div>
-    <div id="mobile-panel" class="only-small">
-        <ul>
-            {% include 'elements/navigation.html' %}
-        </ul>
-    </div>
+    <body class="{{page}}">
+    {% if modules.facebookLike.use %}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.3";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     {% endif %}
-    {% block styles %}{% endblock %}
+        <div id="page">
+            {% include 'elements/preloader.html' %}
+
+            <header class="not-small">
+                {% include 'elements/navigation.html' %}
+            </header>
+            <main id="main" class="{{page}}">
+                <div class="container">
+                {% if modules.facebookLike.use %}
+                    <div class="fb-like pull-right" data-href="{{facebookLike.url}}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                {% endif %}
+                {% block content %}{% endblock %}
+                </div>
+            </main>
+
+            {% include 'elements/footer.html' %}
+        </div>
+
+    {% if mobile_nav == 'scotchpanel' %}
+        <div id="mobile-header" class="only-small">
+            <img id="mobile-menu-button" src="images/mobilemenu.png" width="100" height="35">
+        </div>
+        <div id="mobile-panel" class="only-small">
+           {% include 'elements/navigation.html' %}
+        </div>
+    {% endif %}
+
+    {% if modules['cites']['use'] %}
+        <script src="scripts/jquery.cycle2.min.js"></script>
+    {% endif %}
+
+    {% if modules['trailer']['use'] %}
+        <script src="scripts/nova.ytOverlay.js"></script>
+    {% endif %}
+
+        <script src="scripts/main.js"></script>
+
+    {% if modules['gallery']['use'] %}
+        <link rel="stylesheet" type="text/css" href="scripts/owl-carousel/assets/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="css/gallery.css">
+        <script src="scripts/owl-carousel/owl.carousel.min.js"></script>
+        <script src="scripts/gallery.js"></script>
+        {% include 'modules/gallery.html' %}
+    {% endif %}
+
+
+        {% block scripts %}{% endblock %}
+
     </body>
 </html>

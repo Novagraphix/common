@@ -1,0 +1,135 @@
+@import "libs/mixins";
+#gallery {
+  opacity: 0;
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  @include transition;
+  overflow:hidden;
+  .close {
+      position: absolute;
+      top:20px;
+      right:20px;
+      width: 32px;
+      height: 32px;
+      z-index: 100;
+      @include transition;
+  }
+  .close:active, 
+  .close:focus {
+    @include scale(.85);
+  }
+  //
+  .big-picture {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+    // @include vertical-center-parent;
+    .owl-stage-outer {
+      @include vertical-center;
+    }
+    .owl-prev {
+       border-radius:0;
+       background:url(../images/prev.png) no-repeat center center;
+       position: absolute;
+       top:50%;
+       left:0;
+       width: 50px;
+       height: 70px;
+       margin-top: -35px;
+    }
+    .owl-next {
+       border-radius:0;
+       background:url(../images/next.png) no-repeat center center;
+       position: absolute;
+       top:50%;
+       right:0;
+       width: 50px;
+       height: 70px;
+       margin-top: -35px;
+    }
+    .owl-prev, .owl-next {
+      @include transition;
+    }
+    .owl-prev:active, 
+    .owl-next:active,
+    .owl-prev:focus, 
+    .owl-next:focus {
+      @include scale(.85);
+    }
+    .owl-item {
+      position: relative;
+      height:100%;
+      -webkit-background-size: contain!important;
+           -o-background-size: contain!important;
+              background-size: contain!important;
+      .cnt {
+        position: absolute;
+        transform-style: preserve-3d;
+        z-index: 100;
+        bottom:0;
+        background: rgba(255, 255, 255, .2);
+        color: #FFF;
+        font-weight: 700;
+        text-align: center;
+        width: 8em;
+        height: 40px;
+        line-height: 40px;
+        left:50%;
+        margin-left: -4em;
+        text-shadow: 0 1px 2px #000000;
+        -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5);
+      }
+      .download {
+          position: absolute;
+          bottom:20px;
+          left:50%;
+          margin-left: -75px;
+          background: #e1000b;
+          color: #FFF;
+          text-align: center;
+          font-size: 12px;
+          line-height: 12px;
+          padding:10px 25px;
+      }
+      &.loading {
+        height: 100%;
+        background: url(../scripts/owl-carousel/ajax-loader.gif) no-repeat center center!important;          
+      }
+    }
+  }
+  .big-picture.loading {
+    background: url(../scripts/owl-carousel/ajax-loader.gif) no-repeat center center;      
+  }
+}
+#gallery.active {
+    opacity:1;
+    z-index: 99999;
+    pointer-events:inherit;
+}
+.mobile #gallery .close {
+  display: none;
+}
+i.icon.checkmark {
+  position: absolute;
+  left:7px;
+  top:10px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background:url(../images/check.png) no-repeat center center;
+  -webkit-background-size: contain;
+       -o-background-size: contain;
+          background-size: contain;
+}

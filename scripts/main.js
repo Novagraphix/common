@@ -1,5 +1,6 @@
 $(function() {
-
+    var trace = function(o){ console.log(o); };
+    //
     var docElem = window.document.documentElement,
         win = { width : getViewport('x'), height : getViewport('y') };
 
@@ -11,7 +12,21 @@ $(function() {
     $(window).resize(function() {
         win.width = getViewport('x');
         win.height = getViewport('y');
-
+        if(win.width < win.height) {
+            if(!$('body').hasClass('portrait')) {
+                $('body').addClass('portrait');
+            }
+            if($('body').hasClass('landscape')) {
+                $('body').removeClass('landscape');
+            }
+        } else {
+            if($('body').hasClass('portrait')) {
+                $('body').removeClass('portrait');
+            }
+            if(!$('body').hasClass('landscape')) {
+                $('body').addClass('landscape');
+            }
+        }
 
     }).trigger('resize');
 
@@ -30,38 +45,34 @@ $(function() {
     }
 
     $(window).load(function() {
-        $('#sitePreloader').delay(200).fadeOut(100, function() {
-            $(this).remove();
-        });
-
-        var scotchPanel = $('#mobile-panel').scotchPanel({
-            containerSelector: 'body',
-            direction: 'left',
-            duration: 300,
-            transition: 'ease',
-            clickSelector: '#mobile-menu-button',
-            distanceX: '40%',
-            enableEscapeKey: true
-        });
-
+        trace($('html').data('config'))
+        $('#preloader').delay(500).fadeOut(500, function() { $(this).remove(); });
+        // 
         $(window).trigger("resize");
     });
 
     $(window).on("orientationchange", function() {
         $(window).trigger("resize");
-        //window.location.href = "index.html";
     });
 
-    /*$('#kinofinder').hover(
+    /*
+    $('#kinofinder, #filmwecker').click(function(event) {
+        event.preventDefault();
+    });
+
+    $('#kinofinder').hover(
         function() {
             $(this).text("DEMNÄCHST");
         }, function() {
             $(this).text("KINOFINDER");
-    });*/
+    });
 
-    /*$('#mobile-menu-button').sidr({
-      name: 'sidr-main',
-      source: '#menu'
-    });*/
+    $('#filmwecker').hover(
+        function() {
+            $(this).text("DEMNÄCHST");
+        }, function() {
+            $(this).text("Filmwecker");
+    });
+    */
 
 });

@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block title %}{{project}} - Home Entertainment{% endblock %} 
+
+{% block content %}
+<div id="content" class="home-entertainment">
+	<div class="center">
+		<div class="row packshot {{he_buttons.color}} 12u$">
+	    
+			<div class="4u">
+			  <img src="images/he_btns/br_cover.png" alt="">
+			</div>
+
+			<div class="4u">
+			  	<p><span>EXTRAS</span> (ca. 24 Min.): <br>
+			      • Interview mit Jessica Chastain <br>
+			      • Interview mit James McAvoy <br>
+			      • Deutscher Kinotrailer <br>
+			      • Original-Kinotrailer <br>
+			      <br>
+			      <span>DVD</span> hier kaufen
+			  	</p>
+			  	<div class="he_btn">
+			  		<a href="#" target="_blank"><img src="images/he_btns/{{he_buttons.color}}/amazon.png" alt=""></a>
+			  	</div>
+			</div>
+
+		</div>
+		{% include 'modules/he_btns.html' %}
+	</div>
+</div>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

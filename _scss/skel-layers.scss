@@ -1,0 +1,38 @@
+@import "libs/settings";
+@import "libs/mixins";
+// overwrite screen.scss
+// 
+#titleBar {
+	color: #FFF;
+	background: #000;
+	height: 2em!important;
+	line-height: 2em;
+	display: table;
+	width: 10em;
+	.toggle {
+		display: table-cell;
+		vertical-align: middle;
+		text-transform: uppercase;
+		font-size: 120%;
+		line-height: 2em;
+		padding: 0 0.5em;
+	}
+}
+
+#navPanel {
+	background: #000;
+	ul {
+		li {
+			line-height: 2em;
+			a {
+				display: block;
+				padding: 0 0.5em;
+				vertical-align: middle;
+				text-transform: uppercase;
+			}
+			a.active {
+				color: $primary;
+			}
+		}
+	}
+}

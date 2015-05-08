@@ -1,0 +1,10 @@
+<div id="gallery">
+    <a href="#" class="close"><div class="image"><img src="images/cross.png" alt="" /></div></a>
+    <div class="big-picture owl-carousel loading">
+    {% if modules['gallery']['use'] %}
+        {% for image in modules['gallery']['images'] %}
+        <img src="#" alt="" class="owl-lazy" data-src="{{image}}" />
+        {% endfor %}
+    {% endif %}
+    </div>
+</div>

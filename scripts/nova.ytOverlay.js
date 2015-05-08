@@ -86,23 +86,6 @@
         });
     });
 
-    $('#kinofinder, #filmwecker').click(function(event) {
-        event.preventDefault();
-    });
-
-    $('#kinofinder').hover(
-        function() {
-            $(this).text("DEMNÄCHST");
-        }, function() {
-            $(this).text("KINOFINDER");
-    });
-
-    $('#filmwecker').hover(
-        function() {
-            $(this).text("DEMNÄCHST");
-        }, function() {
-            $(this).text("Filmwecker");
-    });
 
   };
 }( jQuery, window, undefined ));

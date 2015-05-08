@@ -1,0 +1,49 @@
+<footer>
+    <div class="container">
+        {% if modules['pdf_buttons']['startkinos']['use'] and modules['pdf_buttons']['startkinos']['use']['path'] != '' %}
+            <div id="startkinos" class="row 12u$">
+                <div class="top">
+                    <a href="modules['pdf_buttons']['startkinos']['use']['path']">STARTKINOS</a>
+                </div>
+                <div class="bottom">
+                    
+                </div>
+            </div>
+        {% endif %}
+        <div class="row 12u$">
+            <div class="center nav" id="footernav">
+                <ul>
+                    <li><a href="#" target="_blank">KINOFINDER</a></li>
+                    <li><a href="#" target="_blank">FILMWECKER</a></li>
+                    <li><a href="#" target="_blank">PRESSESERVER</a></li>
+                    <li><a href="#" target="_blank">IMPRESSUM</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row 12u$">
+            <div class="center" id="kinostart">
+                {{ release|raw }}
+            </div>
+        </div>
+        
+        <div class="row 12u$ copyright nav">
+            <div class="center nav">
+                <ul>
+                    <li><a href="#" target="_blank">FIRMA</a></li>
+                    <li><a href="#" target="_blank">PRESSE</a></li>
+                    <li><a href="#" target="_blank">IMPRESSUM</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row 12u$ copyright">
+            <div class="center">
+                <span class="cline">© 2014 FIRMA. Alle Rechte vorbehalten. made by <a href="http://www.novagraphix.de" target="_blank">novagraphix</a>
+                </span>
+            </div>
+        </div>
+        <div id="billing">BILLING IMAGE</div>
+    </div>
+</footer>
+

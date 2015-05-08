@@ -1,0 +1,99 @@
+@import "compass";
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20001;
+  
+  background-color: rgb(30,34,40); // Old browsers
+  @include filter-gradient(#b5bdc8, #172026, horizontal); // IE6-9 fallback on horizontal gradient
+  @include background-image(radial-gradient(center, ellipse cover, rgba(181,189,200,1) 0%,rgba(31,41,50,1.0) 75%));
+  box-shadow: inset 0px 0px 15vw rgba(0, 0, 0, 0.8);
+  
+}
+
+#preloader .wrapper {
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  position: absolute;
+  padding: 0;
+  top: 45%;
+  left: calc(50% - 50px);
+  box-shadow: 0 1px 10px rgba(255, 255, 255, 0.85);
+}
+#preloader .inner{
+  -webkit-animation: spin 5s infinite linear;
+          animation: spin 5s infinite linear;
+}
+#preloader .circle {
+  width:100px;
+  height: 100px;
+  position: absolute;
+}
+#preloader .circle .inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+  border-right: none;
+  border-top: none;
+  // backgroudn-clip: padding;
+  box-shadow: inset 5px 5px 5px rgba(255, 255, 255, 0.15);
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+#preloader .circle:nth-of-type(0) {
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+#preloader .circle:nth-of-type(0) .inner {
+  -webkit-animation: spin 2s infinite linear;
+          animation: spin 2s infinite linear;
+}
+
+#preloader .circle:nth-of-type(1) {
+  -webkit-transform: rotate(70deg);
+      -ms-transform: rotate(70deg);
+          transform: rotate(70deg);
+}
+#preloader .circle:nth-of-type(1) .inner {
+  -webkit-animation: spin 2s infinite linear;
+          animation: spin 2s infinite linear;
+}
+
+#preloader .circle:nth-of-type(2) {
+  -webkit-transform: rotate(140deg);
+      -ms-transform: rotate(140deg);
+          transform: rotate(140deg);
+}
+#preloader .circle:nth-of-type(2) .inner {
+  -webkit-animation: spin 2s infinite linear;
+          animation: spin 2s infinite linear;
+}
+

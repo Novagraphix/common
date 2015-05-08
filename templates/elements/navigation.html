@@ -1,2 +1,10 @@
-<li><a {% if page == 'index' %}class="active"{% endif %} href="index.html">Home</a></li>
-<li><a {% if page == 'site2' %}class="active"{% endif %} href="site2.html">Site2</a></li>
+<nav class="container">
+	<img id="logo_small" class="only-small" src="images/logo_small.png" alt="Logo Small"></img>
+   <ul>
+		<li><a {% if page == 'home' %} class="active"{% endif %} href="home.html">Home</a></li>
+		<li><a {% if page == 'inhalt' %} class="active"{% endif %} href="inhalt.html">Inhalt</a></li>
+		<li><a {% if page == 'he' %} class="active"{% endif %} href="he.html">Home Entertainment</a></li>
+		<li><a class="popup {% if page == 'fotos' %} active{% endif %}" data-rel="#gallery" href="fotos.html">Fotos</a></li>
+		<li><a {% if page == 'foo' %} class="active"{% endif %} href="foo.html">Fehler-Seite</a></li>
+	</ul>
+</nav>

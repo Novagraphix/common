@@ -1,0 +1,19 @@
+#cites {
+    position: relative;
+    text-align: center;
+    // top: 95px;
+    // left: 50%;
+    // margin-left: -20px;
+    font-size: 18px;
+    color: #000;
+    cite {
+        // @include vertical-center;
+        text-align: center;
+        // width:500px;
+    }
+    .author {
+        text-transform: uppercase;
+        color: #ca0404;
+        font-size: 20px;
+    }
+}

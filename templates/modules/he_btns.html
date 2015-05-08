@@ -1,0 +1,30 @@
+{% set rows = (he_buttons.links|length / he_buttons.columns) | round(0, 'ceil') %}
+{% set cnt = 0 %}
+{% set unit = 12 / he_buttons.columns %}
+{% for i in 1..rows %}
+    <div class="row {{he_buttons.color}} he_btns 12u$">
+    {% for n in 1..he_buttons.columns if he_buttons.links[cnt] %}
+        <div class="he_btn {{unit}}u">
+            {% set name = he_buttons.links[cnt].name %}
+            {% set link = he_buttons.links[cnt].link %}
+            <a href="{{link}}"  target="_blank">
+                <img src="images/he_btns/{{he_buttons.color}}/{{name}}.png" alt="">
+            </a>
+        </div>
+        {% set cnt = cnt + 1 %}
+    {% else %}
+    {% endfor %}
+    </div>
+{% endfor %}
+<script type="text/javascript">
+    $(function() {
+        $('.he_btn').each(function(){
+            var a = $(this).find('a');
+            var href = a.prop('href');
+            if(href.indexOf("#") !== -1 && href.indexOf("#") === href.length-1 ) {
+                $(this).addClass('deactivated');
+                $(this).on('click', function(ev){ ev.preventDefault(); });
+            }
+        });
+    });
+</script>
