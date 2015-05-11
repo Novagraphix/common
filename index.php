@@ -58,7 +58,7 @@ $config = array(
 				'use' => true
 			),
 			'schulmaterial' => array(
-				'use' => false
+				'use' => true
 			),
 			'kinotour' => array(
 				'use' => false

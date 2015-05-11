@@ -1,15 +1,13 @@
 <footer>
     <div class="container">
-        {% if modules['pdf_buttons']['startkinos']['use'] and modules['pdf_buttons']['startkinos']['use']['path'] != '' %}
-            <div id="startkinos" class="row 12u$">
-                <div class="top">
-                    <a href="modules['pdf_buttons']['startkinos']['use']['path']">STARTKINOS</a>
-                </div>
-                <div class="bottom">
-                    
-                </div>
-            </div>
-        {% endif %}
+    {% if modules['pdfButtons']['startkinos']['use'] and modules['pdfButtons']['startkinos']['path'] != '' %}
+        <a id="startkinos" class="pdf-button " href="{{modules['pdf_buttons']['startkinos']['path']}}" target="_blank">
+            <p>
+                <span class="top">STARTKINOS</span><br>
+                <span class="bottom">Hier läuft der Film</span>
+            </p>
+        </a>
+    {% endif %}
         <div class="row 12u$">
             <div class="center nav" id="footernav">
                 <ul>
@@ -44,6 +42,16 @@
             </div>
         </div>
         <div id="billing">BILLING IMAGE</div>
+
+    {% if modules['pdfButtons']['schulmaterial']['use'] and modules['pdfButtons']['schulmaterial']['path'] != '' %}
+        <a id="schulmaterial" class="pdf-button" href="{{modules['pdf_buttons']['schulmaterial']['path']}}" target="_blank">
+            <p>
+                <span class="top">Schulvorstellungen</span><br>
+                <span class="bottom">Infos für Lehrer</span>
+            </p>
+        </a>
+    {% endif %}
+
     </div>
 </footer>
 
