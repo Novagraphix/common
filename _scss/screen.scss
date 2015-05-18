@@ -5,6 +5,7 @@
 @import "toolkit";
 @import "libs/cites";
 @import "libs/pdf_buttons";
+
 #skel-layers-wrapper {
     height: 100%;
 }
@@ -121,7 +122,7 @@ main {
                 text-align: left;
             }
         }
-        #trailer {
+        #btn_trailer {
             font-size: 14px;
             font-weight: 900;
             padding: 10px;
@@ -131,6 +132,45 @@ main {
             color: white;
             line-height: 46px;
         }
+    }
+}
+
+main.home {
+    #youtube-embed {
+        position: relative;
+        overflow: hidden;
+        max-width: 100%;
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    //  full-responsive
+    #youtube-embed.full-width {
+        padding-bottom: 56.25%; // magic :-)
+        height: 0;
+    }
+    #sizzle {
+        position: relative;
+        overflow: hidden;
+        max-width: 100%;
+        cursor: pointer;
+        border:3px solid $primary;
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    //  full-responsive
+    #sizzle.full-width {
+        padding-bottom: 56.25%; // magic :-)
+        height: 0;
     }
 }
 

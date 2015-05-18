@@ -69,7 +69,9 @@ $config = array(
 			'images'=>glob('media/gallery/*.jpg')
 		),
 		'trailer' => array(
-			'use' => true
+			'use' => true,
+			'type' => 'sizzle', //'embed', // ['embed', 'button', 'sizzle']
+			'yt_id' => 'LYp3qGEeSKA' // ['LYp3qGEeSKA'] testbild
 		),
 		'cites' => array(
 			'use' => true

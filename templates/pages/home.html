@@ -5,9 +5,32 @@
 <div id="content">
     <h1>Index</h1>
     <p><span class="test">Lorem ipsum</span> dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+{% if modules['trailer']['use'] and modules['trailer']['type'] == 'button' %}
     <p>
-        <div id="trailer">TRAILER ANSEHEN</div>
+        <div id="btn_trailer">TRAILER ANSEHEN</div>
     </p>
+{% endif %}
+{% if modules['trailer']['use'] and modules['trailer']['type'] == 'embed' %}
+    <div id="youtube-embed" data-id="{{modules['trailer']['yt_id']}}" data-size='{"width":530, "height":300}'>
+        <iframe src="" frameborder='0' allowfullscreen></iframe>
+    </div>
+{% endif %}
+{% if modules['trailer']['use'] and modules['trailer']['type'] == 'sizzle' %}
+    <div id="sizzle" data-size='{"width":368, "height":300}'>
+        <video 
+            autoplay 
+            preload="auto" 
+            loop 
+            muted
+            poster="media/sizzle/poster.png" 
+            crossorigin="anonymous">
+             <source src="media/sizzle/sizzle.mp4" type="video/mp4">
+             <source src="media/sizzle/sizzle.webm" type="video/webm">
+             <source src="media/sizzle/sizzle.ogv" type="video/ogg">
+         </video>
+    </div>
+{% endif %}
+
 </div>
 <div id="cites" class="cycle-slideshow" data-cycle-slides="> cite">
     <cite>„Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.”<br><span class="author">Author</span></cite>
@@ -17,13 +40,49 @@
 
 {% block scripts %}
 <script type="text/javascript">
-    $(function() {
+$(function() {
 
-        $().ytOverlay({
-            // 'youtubeID' : 'Fq3QmtV8vT0',
-            'youtubeID' : 'LYp3qGEeSKA', // testbild :-)
-            'trigger'   : 'trailer'
+    function isLocalhost() {
+        if(window.location.hostname === 'localhost')
+            return true;
+        else
+            return false;
+    }
+{% if modules['trailer']['use'] and modules['trailer']['type'] == 'embed' %}
+    function iframeEmbed(sel) {
+        var ytid = $(sel).data('id');
+        var size = $(sel).data('size');
+        var url = 'https://www.youtube.com/embed/';
+        // $(sel + ' iframe').prop('src', url + id + )
+        $(sel + ' iframe')
+            .attr('src', '//www.youtube.com/embed/' + ytid + '?rel=0' + '&autoplay=' + (isLocalhost() ? '0' : '1'));
+        $(sel).css({
+            width : size.width,
+            height : size.height
         });
+    }
+    iframeEmbed('#youtube-embed');
+{% endif %}
+{% if modules['trailer']['use'] and modules['trailer']['type'] == 'button' %}
+    $().ytOverlay({
+        // 'youtubeID' : 'Fq3QmtV8vT0',
+        'youtubeID' : '{{modules['trailer']['yt_id']}}', // testbild :-)
+        'trigger'   : 'btn_trailer'
     });
+{% endif %}
+{% if modules['trailer']['use'] and modules['trailer']['type'] == 'sizzle' %}
+    $().ytOverlay({
+        // 'youtubeID' : 'Fq3QmtV8vT0',
+        'youtubeID' : '{{modules['trailer']['yt_id']}}', // testbild :-)
+        'trigger'   : 'sizzle'
+    });
+    var size = $('#sizzle').data('size');
+    $('#sizzle').css({
+        width : size.width,
+        height : size.height
+    });
+    $('#sizzle video').get(0).play()
+{% endif %}
+});
 </script>
 {% endblock %}
