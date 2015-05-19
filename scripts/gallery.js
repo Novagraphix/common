@@ -30,16 +30,16 @@ $(function() {
                     var itemcount = items.length-4;
                     for(var n = 0; n < items.length; n++) {
                         var item = items[n];
-                        if(n==0) {
+                        if(n===0) {
                             html = '<div class="cnt">' + (itemcount-1) + ' von ' + itemcount + '</div>';
                         }
-                        else if (n==1) {
+                        else if (n===1) {
                             html = '<div class="cnt">' + itemcount + ' von ' + itemcount + '</div>';
                         }
-                        else if (n==items.length-2) {
+                        else if (n===items.length-2) {
                             html = '<div class="cnt">' + 1 + ' von ' + itemcount + '</div>';
                         }
-                        else if (n==items.length-1) {
+                        else if (n===items.length-1) {
                             html = '<div class="cnt">' + 2 + ' von ' + itemcount + '</div>';
                         }
                         else {
@@ -55,7 +55,7 @@ $(function() {
                             backgroundSize:'contain'
                         });
                     }
-                    $('#gallery .big-picture').removeClass('loading').addClass('loaded');
+                    //;
                     if( $('html').hasClass('small') )
                         skel.plugins.layers.hide('navPanel');
                     // 
@@ -68,6 +68,14 @@ $(function() {
 
                 }
             });
+            // gallery.on('load.owl.lazy', function(ev){
+            //     trace(ev)
+            //     trace('lazy load')
+            // })
+            gallery.on('loaded.owl.lazy', function(ev){
+                // trace(ev)
+                $('#gallery .big-picture').removeClass('loading').addClass('loaded');
+            })
         }
     }
     $('.popup, navPanel a').on('click', function(ev){

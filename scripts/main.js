@@ -46,7 +46,7 @@ $(function() {
 
     $(window).load(function() {
         //trace($('html').data('config'))
-        $('#preloader').delay(500).fadeOut(500, function() { $(this).remove(); });
+        $('#preloader').delay(1000).fadeOut(800, function() { $(this).remove(); });
         //
         $(window).trigger("resize");
     });

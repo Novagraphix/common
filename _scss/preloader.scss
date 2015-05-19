@@ -1,5 +1,29 @@
 @import "compass";
 
+$bg_hex_old: #000;
+
+$bg_hex: #f20000;
+$bg_hex_darker: #AE0000;
+$bg_hex_even_darker: #4F0000;
+
+$bg_rgba: rgba(242, 0, 0, 1.0);
+$bg_rgba_darker: rgba(174, 0, 0, 1.0);
+$bg_rgba_even_darker: rgba(79, 0, 0, 1.0);
+
+$circle_rgba_light:  rgba(255, 204, 204, 0.85);
+$circle_rgba_even_lighter:  rgba(255, 236, 236, 0.5);
+$circle_rgba_even_lighter2:  rgba(255, 236, 236, 0.3);
+$circle_rgba_even_lighter3:  rgba(255, 236, 236, 0.15);
+
+$speed_0: 2s;
+$speed_1: 6s;
+$speed_2: 8s;
+$speed_3: 12s;
+
+$thickness: 4px; // 2px - 6px
+$type: solid; // [solid, double]
+$smoothness: 48%; // 40-50% max
+
 #preloader {
   position: fixed;
   top: 0;
@@ -8,10 +32,10 @@
   height: 100%;
   z-index: 20001;
   
-  background-color: rgb(30,34,40); // Old browsers
-  @include filter-gradient(#b5bdc8, #172026, horizontal); // IE6-9 fallback on horizontal gradient
-  @include background-image(radial-gradient(center, ellipse cover, rgba(181,189,200,1) 0%,rgba(31,41,50,1.0) 75%));
-  box-shadow: inset 0px 0px 15vw rgba(0, 0, 0, 0.8);
+  background-color: $bg_hex_old; // Old browsers
+  @include filter-gradient($bg_hex_darker, $bg_hex_even_darker, horizontal); // IE6-9 fallback on horizontal gradient
+  @include background-image(radial-gradient(center, ellipse cover, $bg_rgba_darker 0%, $bg_rgba_even_darker 75%));
+  box-shadow: inset 0px 5px 15vw rgba(0, 0, 0, 0.8);
   
 }
 
@@ -24,12 +48,16 @@
   padding: 0;
   top: 45%;
   left: calc(50% - 50px);
-  box-shadow: 0 1px 10px rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 8px 5px $circle_rgba_light;
+  
+  -webkit-animation: spin $speed_0 infinite linear;
+          animation: spin $speed_0 infinite linear;
 }
-#preloader .inner{
-  -webkit-animation: spin 5s infinite linear;
-          animation: spin 5s infinite linear;
-}
+
+// #preloader .inner{
+//   -webkit-animation: spin $speed_0 infinite linear;
+//           animation: spin $speed_0 infinite linear;
+// }
 #preloader .circle {
   width:100px;
   height: 100px;
@@ -38,12 +66,12 @@
 #preloader .circle .inner {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  border: 5px solid rgba(255, 255, 255, 0.5);
+  border-radius: $smoothness;
+  border: $thickness $type $circle_rgba_even_lighter2;
   border-right: none;
   border-top: none;
   // backgroudn-clip: padding;
-  box-shadow: inset 5px 5px 5px rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 8px 5px $circle_rgba_even_lighter3;
 }
 
 @-webkit-keyframes spin {
@@ -73,8 +101,8 @@
           transform: rotate(0deg);
 }
 #preloader .circle:nth-of-type(0) .inner {
-  -webkit-animation: spin 2s infinite linear;
-          animation: spin 2s infinite linear;
+  -webkit-animation: spin $speed_1 infinite linear;
+          animation: spin $speed_1 infinite linear;
 }
 
 #preloader .circle:nth-of-type(1) {
@@ -83,8 +111,8 @@
           transform: rotate(70deg);
 }
 #preloader .circle:nth-of-type(1) .inner {
-  -webkit-animation: spin 2s infinite linear;
-          animation: spin 2s infinite linear;
+  -webkit-animation: spin $speed_2 infinite ease-in-out;
+          animation: spin $speed_2 infinite ease-in-out;
 }
 
 #preloader .circle:nth-of-type(2) {
@@ -93,7 +121,7 @@
           transform: rotate(140deg);
 }
 #preloader .circle:nth-of-type(2) .inner {
-  -webkit-animation: spin 2s infinite linear;
-          animation: spin 2s infinite linear;
+  -webkit-animation: spin $speed_3 infinite linear;
+          animation: spin $speed_3 infinite linear;
 }
 
