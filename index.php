@@ -52,6 +52,16 @@ $config = array(
 			)
 		)
 	),
+	'navigation' => array(
+		'use' => true, // [true, false / 'static']
+		'pages' => array(
+			array('label' => 'Home', 'file' => 'home', 'classes' => '', 'id' => ''),
+			array('label' => 'Inhalt', 'file' => 'inhalt', 'classes' => '', 'id' => ''),
+			// array('label' => 'Trailer', 'file' => 'trailer', 'classes' => 'popup', 'id' => 'trailer_btn', 'data' => array('name'=>'rel', 'value'=>'#trailer')),
+			array('label' => 'Fotos', 'file' => 'fotos', 'classes' => 'popup', 'id' => '', 'data' => array('name'=>'rel', 'value'=>'#gallery')),
+			array('label' => '404 - Example', 'file' => 'foo', 'classes' => '', 'id' => ''),
+		)
+	),
 	'modules' => array(
 		'pdfButtons' => array(
 			'startkinos' => array(
@@ -78,7 +88,7 @@ $config = array(
 		),
 		'facebookLike' => array(
 			'use' => false,
-			'url' => 'http://google.de', //
+			'url' => 'http://localhost', //
 			'og_img' => '', // pfad zu einem quadratischem Bild mit mindestens 250x250px Ausmaß
 			'og_description' => '' // max 140 zeichen
 		)

@@ -1,7 +1,7 @@
 <footer>
     <div class="container">
     {% if modules['pdfButtons']['startkinos']['use'] and modules['pdfButtons']['startkinos']['path'] != '' %}
-        <a id="startkinos" class="pdf-button " href="{{modules['pdf_buttons']['startkinos']['path']}}" target="_blank">
+        <a id="startkinos" class="pdf-button " href="{{modules['pdfButtons']['startkinos']['path']}}" target="_blank">
             <p>
                 <span class="top">STARTKINOS</span><br>
                 <span class="bottom">Hier läuft der Film</span>
@@ -44,7 +44,7 @@
         <div id="billing">BILLING IMAGE</div>
 
     {% if modules['pdfButtons']['schulmaterial']['use'] and modules['pdfButtons']['schulmaterial']['path'] != '' %}
-        <a id="schulmaterial" class="pdf-button" href="{{modules['pdf_buttons']['schulmaterial']['path']}}" target="_blank">
+        <a id="schulmaterial" class="pdf-button" href="{{modules['pdfButtons']['schulmaterial']['path']}}" target="_blank">
             <p>
                 <span class="top">Schulvorstellungen</span><br>
                 <span class="bottom">Infos für Lehrer</span>

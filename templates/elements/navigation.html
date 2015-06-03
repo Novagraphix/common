@@ -1,3 +1,21 @@
+{% if navigation['use'] %}
+<nav class="container">
+	<img id="logo_small" class="only-small" src="images/logo_small.png" alt="Logo Small"></img>
+	{% set pagenum = navigation.pages|length %}
+	{% if pagenum > 0 %}
+	<ul>
+	{% for _page in navigation.pages %}
+		<li><a id="{{_page.id}}" 
+		href="{{_page.file}}.html" 
+		class="{{_page.classes}} {% if page == _page.file %} active {% endif %}"
+		{% if _page.id != '' %} id="{{_page.id}}" {% endif %}
+		{% if _page.data != null %} data-{{_page.data.name}}="{{_page.data.value}}" {% endif %}
+		>{{_page.label}}</a></li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+</nav>
+{% else %}
 <nav class="container">
 	<img id="logo_small" class="only-small" src="images/logo_small.png" alt="Logo Small"></img>
    <ul>
@@ -8,3 +26,4 @@
 		<li><a {% if page == 'foo' %} class="active"{% endif %} href="foo.html">Fehler-Seite</a></li>
 	</ul>
 </nav>
+{% endif %}
