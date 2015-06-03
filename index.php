@@ -4,7 +4,9 @@ require 'class.Website.php';
 $config = array(
 	'project_name' => 'Common',
 	'twig' => 'new', // 'old' php <= 5.4
-	'releasedate' => '2015-12-24',
+	'releasedate' => '2015-12-24', // Format: 'Y-m-d' 
+	'releaseFormat' => '%d. %B', // Ex. #4 http://php.net/manual/en/function.strftime.php#example-2508
+	// 'releaseFormat' => stristr(PHP_OS,"win") ? "%#d.%#m.%Y" : "%-d.%-m.%Y", // stristr(PHP_OS,"win") ? "%#d.%#m.%Y" : "%-d.%-m.%Y" 
 	'mobile_nav' => 'skel-layers', // [ false, 'scotchpanel', 'skel-layers' ]
 	'he_buttons' => array(
 		'color' => 'on_dark',

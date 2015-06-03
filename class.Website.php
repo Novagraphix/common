@@ -21,12 +21,16 @@ class Website
 			$this->log->pushHandler(new BrowserConsoleHandler());
 			// <-- end log-channel
 		}
+		// 
+		date_default_timezone_set('Europe/Berlin');
+		setlocale(LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge');
 		//
 		$this->default_config = array(
 			'page' => $this->getPagename(),
 			'base' => '',
 			'mobile_nav' => 'skel-layers', //'scotchpanel','skel-layers'
 			'releasedate' => date( 'Y-m-d', strtotime('tomorrow') ),
+			'releaseFormat' => 'd.m.Y',
 			'post_releasedate_txt' => 'Jetzt im Kino',
 			'pre_releasedate_txt' => array(
 				'Ab <span>',
@@ -121,8 +125,8 @@ class Website
 		if (strftime("%Y-%m-%d")>=$config['releasedate']) {
 			$r = $this->default_config['post_releasedate_txt'];
 		} else {
-			// date( 'd.m.Y', strtotime($this->config['releasedate']) )
-			$r = $this->default_config['pre_releasedate_txt'][0] .date( 'd.m.Y', strtotime($config['releasedate']) ) .$this->default_config['pre_releasedate_txt'][1];
+			$r = $this->default_config['pre_releasedate_txt'][0] .utf8_encode(strftime( $config['releaseFormat'], strtotime($config['releasedate']) )) .$this->default_config['pre_releasedate_txt'][1];
+			// $r = $this->default_config['pre_releasedate_txt'][0] .date( 'd.m.Y', strtotime($config['releasedate']) ) .$this->default_config['pre_releasedate_txt'][1];
 		}
 		return $r;
 	}
