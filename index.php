@@ -55,7 +55,7 @@ $config = array(
 		)
 	),
 	'navigation' => array(
-		'use' => true, // [true, false / 'static']
+		'dynamic' => true, // [true, false / 'static']
 		'pages' => array(
 			array('label' => 'Home', 'file' => 'home', 'classes' => '', 'id' => ''),
 			array('label' => 'Inhalt', 'file' => 'inhalt', 'classes' => '', 'id' => ''),

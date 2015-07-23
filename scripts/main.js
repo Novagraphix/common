@@ -46,7 +46,10 @@ $(function() {
 
     $(window).load(function() {
         //trace($('html').data('config'))
-        $('#preloader').delay(1000).fadeOut(800, function() { $(this).remove(); });
+        $('#preloader').delay(1000).fadeOut(800, function() { 
+            $(this).remove(); 
+            $('body').addClass('loaded');
+         });
         //
         $(window).trigger("resize");
     });
@@ -54,6 +57,36 @@ $(function() {
     $(window).on("orientationchange", function() {
         $(window).trigger("resize");
     });
+
+
+    if( $('.btn_modal').length > 0 ) {
+
+        var modals = $('.btn_modal');
+        var cont = $('<div id="modals"></div>').appendTo('body');
+        $.each(modals, function(n){
+            var id = $(this).data('rel').substr(1);
+            var tpl = 'templates/elements/' + id + '.html';
+            var jqxhr = $.ajax({
+                dataType: 'text',
+                url: tpl
+            }).done(function( html ) {
+                cont.append( html )
+            })
+            .fail(function() {
+                trace('"' + tpl + '" failed to load ' )
+            });
+        })
+
+        $('a.btn_modal').on('click', function(ev){
+            ev.preventDefault();
+            var rel = $(this).data('rel');
+            $(rel).fadeIn();
+            $(rel + ' .modal_bg, ' + rel + ' .close').off().on('click', function(ev){
+                ev.preventDefault();
+                $(rel).fadeOut();
+            });
+        });
+    }
 
     /*
     $('#kinofinder, #filmwecker').click(function(event) {

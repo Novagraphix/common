@@ -1,0 +1,141 @@
+@import "libs/mixins";
+
+$close_wh : 40px;
+$close_position_outside : true;
+$modal_bg_color : rgba(0, 0, 0, .85);
+$modal_inner_bg_color: #000;
+$modal_inner_color: #7bb0ba;
+$modal_width: 640px;
+$modal_min_height: 420px;
+$modal_height: auto;
+$close_bg_color : #fff;
+$close_bg_color_inner : #fff;
+$close_bg_color_hover: #7bb0ba;
+//
+.modal {
+    position: fixed;
+    z-index: 100000;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    display:none;
+    cursor: pointer;
+    .modal_bg {
+        position: absolute;
+        z-index: 1;
+        top:0;
+        left:0;
+        width:100vw;
+        height:100vh;
+        background:$modal_bg_color;
+    }
+    .inner {
+        z-index: 2;
+        cursor:auto;
+        color:$modal_inner_color;
+        @include vertical-center;
+        width:$modal_width;
+        min-height: $modal_min_height;
+        height: $modal_height;
+        background:$modal_inner_bg_color;
+        // a {
+        //     color:$modal_inner_color;
+        // }
+        // a:hover {
+        //     text-shadow: 0 3px 8px $modal_inner_color;
+        // }
+    }
+    .close {
+        position: absolute;
+        @if $close_position_outside {
+            right:-$close_wh;
+            top:-$close_wh;
+        } @else {
+            right:10px;
+            top:10px;
+        }
+        width:$close_wh;
+        height:$close_wh;
+        z-index: 100000;
+        -moz-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+
+        .cross {
+            display:inline-block;
+            width: $close_wh;
+            height: $close_wh;
+            position: relative;
+        }
+
+        .cross:before,
+        .cross:after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            background:$close_bg_color;
+            @include transition;
+        }
+
+        .cross:before {
+            left: 50%;
+            width: 4px;
+            margin-left: -2px;
+            height: 100%;
+        }
+
+        .cross:after {
+            top: 50%;
+            left:0;
+            height: 4px;
+            margin-top: -2px;
+            width: 100%;
+        }
+    }
+    .close:hover .cross:before,
+    .close:hover .cross:after,
+
+    .close:active .cross:before,
+    .close:active .cross:after,
+
+    .close:focus .cross:before,
+    .close:focus .cross:after {
+        background:$close_bg_color_hover;
+    }
+}
+.modal.fadeIn {
+    opacity:1;
+}
+
+@media screen and (max-width:740px) {
+    .modal {
+        .inner {
+            @include vertical-reset;
+            width:100%;
+            min-height: 100%;
+            height: 100%;
+            overflow-y: auto;
+        }
+        .close {
+            right:10px;
+            top:10px;
+            .cross:before,
+            .cross:after {
+                background:$close_bg_color_hover;
+            }
+        }
+        .close:hover .cross:before,
+        .close:hover .cross:after,
+
+        .close:active .cross:before,
+        .close:active .cross:after,
+
+        .close:focus .cross:before,
+        .close:focus .cross:after {
+            background:$close_bg_color_inner;
+        }
+    }
+}

@@ -80,7 +80,7 @@ $(function() {
     }
     // 
 
-    $('.popup, #navPanel a.popup').on('click', function(ev){
+    $('.popup').on('click', function(ev){
         ev.preventDefault();
         if($(this).data('rel') != undefined) {
             createGallery($(this).data('rel'));

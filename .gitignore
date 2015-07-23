@@ -4,3 +4,4 @@ vendor
 cache
 .sass-cache/**/*
 web-build/**/*
+.phpintel/**/*
