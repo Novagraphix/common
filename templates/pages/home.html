@@ -32,10 +32,14 @@
 {% endif %}
 
 </div>
+
+{% if modules['cites']['use'] %}
 <div id="cites" class="cycle-slideshow" data-cycle-slides="> cite">
     <cite>„Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.”<br><span class="author">Author</span></cite>
     <cite>„Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.”<br><span class="author">Author</span></cite>
 </div>
+{% endif %}
+
 {% endblock %}
 
 {% block scripts %}

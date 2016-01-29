@@ -3,7 +3,8 @@ require 'class.Website.php';
 //
 $config = array(
 	'project_name' => 'Common',
-	'twig' => 'new', // 'old' php <= 5.4
+	'customer' => 'nfp', // [nfp, prokino]
+	'twig' => 'old', // 'old' php <= 5.4
 	'releasedate' => '2015-12-24', // Format: 'Y-m-d' 
 	'releaseFormat' => '%d. %B', // Ex. #4 http://php.net/manual/en/function.strftime.php#example-2508
 	// 'releaseFormat' => stristr(PHP_OS,"win") ? "%#d.%#m.%Y" : "%-d.%-m.%Y", // stristr(PHP_OS,"win") ? "%#d.%#m.%Y" : "%-d.%-m.%Y" 
@@ -59,7 +60,8 @@ $config = array(
 		'pages' => array(
 			array('label' => 'Home', 'file' => 'home', 'classes' => '', 'id' => ''),
 			array('label' => 'Inhalt', 'file' => 'inhalt', 'classes' => '', 'id' => ''),
-			// array('label' => 'Trailer', 'file' => 'trailer', 'classes' => 'popup', 'id' => 'trailer_btn', 'data' => array('name'=>'rel', 'value'=>'#trailer')),
+			array('label' => 'Trailer', 'file' => 'trailer', 'classes' => 'popup', 'id' => 'trailer_btn', 'data' => array('name'=>'rel', 'value'=>'#trailer')),
+			array('label' => 'Home Entertainement', 'file' => 'he', 'classes' => '', 'id' => ''),
 			array('label' => 'Fotos', 'file' => 'fotos', 'classes' => 'popup', 'id' => '', 'data' => array('name'=>'rel', 'value'=>'#gallery')),
 			array('label' => '404 - Example', 'file' => 'foo', 'classes' => '', 'id' => ''),
 		)
